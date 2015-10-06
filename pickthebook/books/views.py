@@ -6,4 +6,5 @@ from .models import Question, Answer, Author, Book
 
 class QuestionDetailView(DetailView):
     model = Question
+    slug_field = 'q_text'
 
