@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 
 from .models import Question, Answer, Author, Book
 
-class QuestionDetailView(DetailView):
+class QuestionDetailView(ListView):
     model = Question
-    slug_field = 'q_text'
+    template_name = 'question_list.html'
 
