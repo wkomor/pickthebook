@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбери книгу</title>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-slider.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="#">Домой</a></li>
+                <li><a href="#">О проекте</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        <h3 class="text-muted">Выбери книгу</h3>
+    </div>
+</div>
+
+<!-- Слайдер с рекламой! -->
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Маркеры слайдов -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Содержимое слайдов -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{% static 'image/1.jpg' %}" alt="...">
+                    <div class="carousel-caption">
+                        <h3>Россия (Москва)</h3>
+                        <p>Где это видано, чтобы люди в Москве без прописки проживали.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="{% static 'image/2.jpg' %}" alt="...">
+                    <div class="carousel-caption">
+                        <h3>Осень</h3>
+                        <p>Осень — это вторая весна, когда каждый лист — цветок.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="{% static 'image/3.jpg' %}" alt="...">
+                    <div class="carousel-caption">
+                        <h3>Дождь</h3>
+                        <p>Осень опять идут дожди...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div> <!--Слайдер-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <a href="{% url 'question' %}" class="">Начало</a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
