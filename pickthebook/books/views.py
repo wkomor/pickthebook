@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import ListView, DetailView, TemplateView
 
-from .models import Question, Answer, Author, Book
+from .models import Question,  Author, Book
 
 
 class QuestionDetailView(ListView):
