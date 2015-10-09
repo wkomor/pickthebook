@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^question/', include('books.urls')),
     url(r'^$', include('books.urls')),
-
+    url(r'^/index', include('books.urls')),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

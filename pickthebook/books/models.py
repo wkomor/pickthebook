@@ -1,36 +1,37 @@
 #coding=utf-8
+
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 class QuestionType(models.Model):
     """
     Тип: вопрос или ответ
     """
-    type = models.BooleanField
+    type = models.IntegerField(default=1)
+    description = models.CharField(max_length=10)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.description
+    def __unicode__(self):
+        return self.description
 
-
-class Question(models.Model):
+class Question(MPTTModel):
     """
     Узел дерева вопросов и ответов, может быть как вопросом, так и ответом
     """
     q_text = models.CharField(max_length=100)
-    position = models.IntegerField
+    position = models.IntegerField(default=0)
+    parent = TreeForeignKey('self', blank=True, null=True, verbose_name="Родитель", related_name="child")
     type = models.ForeignKey(QuestionType)
 
+    class MPTTMeta:
+        order_insertion_by=['q_text']
 
-class Ancestor(models.Model):
-    """
-        Класс для хранения вопроса-предка
-    """
-    ancestor = models.ForeignKey(Question, related_name='+')
-    descendant = models.IntegerField
+    def __str__(self):              # __unicode__ on Python 2
+        return self.q_text
+    def __unicode__(self):
+        return self.q_text
 
-
-class Descendant(models.Model):
-    """
-        Класс для хранения вопроса-потомка
-    """
-    descendant = models.ForeignKey(Question, related_name='+')
 
 
 class Author(models.Model):
@@ -47,6 +48,7 @@ class Book(models.Model):
     question = models.ForeignKey(Question)
     author = models.ManyToManyField(Author)
 
+#MPTTModel.register(Question,)
 
 
 
