@@ -1,0 +1,8 @@
+{% block content %}
+    {% for qwest in object_list %}
+        <p>{{ qwest.q_text}}</p>
+    {% empty %}
+    <p>Вопросов нет</p>
+    {% endfor %}
+
+{% endblock %}
