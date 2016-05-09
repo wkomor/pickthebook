@@ -11,4 +11,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 virtualenv at ~/private/.pick" project-jdk-type="Python SDK" />
+  <component name="TaskProjectConfiguration">
+    <server type="YouTrack" url="https://pickthebook.myjetbrains.com/youtrack" />
+  </component>
 </project>

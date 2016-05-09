@@ -15,7 +15,7 @@ class Item(MPTTModel):
     BOOK = 2
     ITEM_TYPE = ((QUESTION, 'Question'), (ANSWER, 'Answer'), (BOOK, 'Book'))
 
-    item_type = models.PositiveSmallIntegerField(choices=ITEM_TYPE, db_index=True)
+    itemtype = models.PositiveSmallIntegerField(choices=ITEM_TYPE, db_index=True, default=QUESTION)
     title = models.CharField(max_length=255, db_index=True)
     text = models.TextField(blank=True, null=True)
     author = models.CharField(max_length=255, blank=True, null=True, db_index=True)
