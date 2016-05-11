@@ -2,8 +2,8 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework.response import Response
-from .serializers import ItemSerializer
-from .models import Item
+from .serializers import ItemSerializer, BookSerializer
+from .models import Item, Book
 
 
 class ItemList(generics.ListAPIView):
@@ -25,15 +25,25 @@ class ItemDetail(APIView):
         except Item.DoesNotExist:
             raise Http404
 
+    def get_book(self, item):
+        try:
+            return Book.objects.get(item=item)
+        except Book.DoesNotExist:
+            raise Http404
+
     def get(self, request, format=None):
         item = self.get_object(request)
-        nodes = item.get_children()
-        node = ItemSerializer(nodes, many=True)
-        children = nodes[0].get_children()
-        answers = ItemSerializer(children, many=True)
+        child = item.get_children().first()
         response = dict()
-        response['node'] = node.data
-        response['answers'] = answers.data
+        if child:
+            response['node'] = ItemSerializer(child).data
+            if child.itemtype == Item.BOOK:
+                response['book'] = BookSerializer(self.get_book(child)).data
+            children = child.get_children()
+            if children:
+                response['answers'] = ItemSerializer(children, many=True).data
+        else:
+            raise Http404
         return Response(response)
 
 

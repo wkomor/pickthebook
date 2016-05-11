@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from views import ItemList, ItemDetail
+from .views import ItemList, ItemDetail
 
 urlpatterns = patterns('',
     url(r'^root/', ItemList.as_view()),
