@@ -1,10 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="{% static 'app.min.js' %}"></script>
     <title>Выбор книги</title>
 </head>
-<body>
-test
+<body ng-app="pickthebook">
+    <div ng-controller="indexController">
+        Hello {$ firstName $} {$ lastName $}
+    </div>
 </body>
 </html>
