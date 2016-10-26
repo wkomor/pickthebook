@@ -9,9 +9,6 @@ from .serializers import ItemSerializer
 from .models import Item
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
-
 class ItemList(generics.ListAPIView):
     """
     API endpoint that represents a list of items.
