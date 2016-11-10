@@ -1,0 +1,22 @@
+{
+  "name": "pickthebook",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Vitold Komorovski"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/wkomor/pickthebook",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "jquery": "2.*",
+    "angular": "*"
+  }
+}
