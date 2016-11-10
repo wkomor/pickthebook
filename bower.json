@@ -15,8 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "normalize.css": "*",
-    "jquery": "2.*",
-    "angular": "*"
+    "angular": "1.5.8"
   }
 }
