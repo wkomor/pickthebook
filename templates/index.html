@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="../assets/js/partials/app.js"></script>
+    <script src="./js/main.js"></script>
+    <link type="text/css" href="./css/main.css">
     <title>Выбор книги</title>
 </head>
 <body ng-app="pickthebook">
 //= header.html
 <div ng-controller="indexController">
-        Hello {$ firstName $} {$ lastName $}
+        Hello {{ firstName }} {{  lastName }}
     </div>
 //= footer.html
 </body>

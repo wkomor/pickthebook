@@ -5,6 +5,8 @@
  * Third party
  */
 //= ../../bower_components/angular/angular.min.js
+//= ../../bower_components/jquery/dist/jquery.min.js
+//= ../../bower_components/bootstrap/dist/js/bootstrap.min.js
 
 
 /*
