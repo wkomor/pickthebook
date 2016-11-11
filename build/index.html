@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta title="Гайд по книгам - выбери книгу для чтения и реши, что почитать">
     <script src="./js/main.js"></script>
     <link type="text/css" href="./css/main.css" rel="stylesheet" media="screen">
     <title>Выбор книги</title>
@@ -11,18 +12,27 @@
     <div class="row">
         <div class="site-head">
             <header>
-                <a href="/"><h1>Technical notebook</h1></a>
+                <a href="/"><h1>Выбери книгу</h1></a>
                 <nav>
                 </nav>
             </header>
         </div>
     </div>
 </div>
-<div ng-controller="indexController">
-        Hello {{ firstName }} {{  lastName }}
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div ng-controller="indexController">
+            Hello {{ details }}
+        </div>
     </div>
-<section class="header">
-    Footer
-</section>
+    <div class="col-lg-2"></div>
+</div>
+
+<footer class="footer navbar-fixed-bottom row-flui">
+  <div class="container">
+    <p class="text-muted">Place sticky footer content here.</p>
+  </div>
+</footer>
 </body>
 </html>

@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta title="Гайд по книгам - выбери книгу для чтения и реши, что почитать">
     <script src="./js/main.js"></script>
     <link type="text/css" href="./css/main.css" rel="stylesheet" media="screen">
     <title>Выбор книги</title>
 </head>
 <body ng-app="pickthebook">
 //= header.html
-<div ng-controller="indexController">
-        Hello {{ firstName }} {{  lastName }}
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div ng-controller="indexController">
+            Hello {{ details }}
+        </div>
     </div>
+    <div class="col-lg-2"></div>
+</div>
+
 //= footer.html
 </body>
 </html>
