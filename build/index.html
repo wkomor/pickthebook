@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <script src="./js/main.js"></script>
-    <link type="text/css" href="./css/main.css">
+    <link type="text/css" href="./css/main.css" rel="stylesheet" media="screen">
     <title>Выбор книги</title>
 </head>
 <body ng-app="pickthebook">
-<section class="header">
-    <button type="button" class="btn btn-default">Default</button>
-</section>
+<div class="navbar navbar-default">
+    <div class="row">
+        <div class="site-head">
+            <header>
+                <a href="/"><h1>Technical notebook</h1></a>
+                <nav>
+                </nav>
+            </header>
+        </div>
+    </div>
+</div>
 <div ng-controller="indexController">
         Hello {{ firstName }} {{  lastName }}
     </div>
