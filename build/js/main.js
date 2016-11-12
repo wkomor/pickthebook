@@ -369,8 +369,8 @@ app.controller('indexController', function($scope,  $http) {
     $scope.details = [];
     fetch();
     function fetch() {
-    $http.get("http://127.0.0.1:8080/api/items/")
+    $http.get("http://127.0.0.1:8080/api/root/")
         .success(function(response) {
-            $scope.details = response[0].title; });
+            $scope.details = response; });
 }
 });

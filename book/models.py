@@ -4,7 +4,9 @@ from django.db import models
 import mptt
 from mptt.models import MPTTModel
 
+
 # Create your models here.
+
 
 class Item(MPTTModel):
     """
@@ -15,21 +17,48 @@ class Item(MPTTModel):
     BOOK = 2
     ITEM_TYPE = ((QUESTION, 'Question'), (ANSWER, 'Answer'), (BOOK, 'Book'))
 
-    item_type = models.PositiveSmallIntegerField(choices=ITEM_TYPE, db_index=True)
-    title = models.CharField(max_length=255, db_index=True)
-    text = models.TextField(blank=True, null=True)
-    author = models.CharField(max_length=255, blank=True, null=True, db_index=True)
+    itemtype = models.PositiveSmallIntegerField(choices=ITEM_TYPE,
+                                                db_index=True,
+                                                default=QUESTION)
+    text = models.TextField()
     parent = models.ForeignKey('self', blank=True, null=True,
-                               verbose_name="Parent", related_name='child', db_index=True)
-    image = models.ImageField(blank=True, null=True)
+                               verbose_name="Parent", related_name='child',
+                               db_index=True)
+
     is_positive = models.BooleanField(default=True)
 
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.text
 
     class MPTTMeta:
         level_attr = 'item_type'
-        order_insertion_by=['title']
+        order_insertion_by = ['text']
 
 
-mptt.register(Item,)
+class Genre(models.Model):
+    """
+
+    """
+    name = models.CharField(max_length=255, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Book(models.Model):
+    """
+
+    """
+    title = models.CharField(name='Название', max_length=1024, db_index=True)
+    description = models.TextField(blank=True, null=True)
+    author = models.CharField(max_length=255, blank=True, null=True,
+                              db_index=True)
+    item = models.ForeignKey(Item, related_name='books', null=True)
+    genre = models.ManyToManyField(Genre, db_index=True)
+    image = models.ImageField(blank=True, null=True)
+
+    def __str__(self):
+        return self.Название
+
+
+mptt.register(Item, )
