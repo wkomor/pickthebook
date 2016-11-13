@@ -10,12 +10,21 @@ app.config(['$httpProvider', function($httpProvider) {
 ]);
 
 app.controller('indexController', function($scope,  $http) {
-    $scope.details = [];
+    $scope.link = "http://127.0.0.1:8080/api/root/"
+    $scope.question = 'С чего начнем?';
+    $scope.answers = [];
+
     fetch();
     function fetch() {
-    $http.get("http://127.0.0.1:8080/api/root/")
+    $http.get($scope.link)
         .success(function(response) {
-            $scope.details = response; });
+            response.forEach(function (item, i, arr) {
+                if(item.itemtype==="Question"){
+                    $scope.question = item.text;
+                }
+                 $scope.answers.push(item);
+            })
+            });
 }
 });
 

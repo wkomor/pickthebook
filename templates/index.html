@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="pickthebook">
 <head>
     <meta charset="UTF-8">
     <meta title="Гайд по книгам - выбери книгу для чтения и реши, что почитать">
@@ -7,14 +7,18 @@
     <link type="text/css" href="./css/main.css" rel="stylesheet" media="screen">
     <title>Выбор книги</title>
 </head>
-<body ng-app="pickthebook">
+<body >
 //= header.html
 <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
         <div ng-controller="indexController">
-            <div ng-repeat="item in details">
-                {{ item }}
+            <div>{{ question }}</div>
+            <div ng-repeat="item in answers"><br>
+                <a href="http://127.0.0.1:8080/api/detail/?id={{ item.id }}">
+                    <button class="btn btn-success">{{ item.text }}</button>
+                </a><br>
+
             </div>
         </div>
     </div>
