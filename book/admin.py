@@ -9,7 +9,7 @@ class ItemAdmin(MPTTModelAdmin):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('Название',)
+    list_display = ('title',)
     list_fields = ('description', 'author', 'item')
 
 

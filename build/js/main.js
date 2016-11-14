@@ -368,18 +368,27 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('indexController', function($scope,  $http) {
     $scope.question = 'С чего начнем?';
     $scope.answers = [];
+
     $scope.transit = function(id){
         $http.get("http://127.0.0.1:8080/api/detail/?id="+id)
         .success(function(response) {
             $scope.answers = [];
             $scope.question = response.node.text;
             var answers = response.answers;
+            var book = response.book;
             if (answers){
                 answers.forEach(function (item, i, arr) {
                     $scope.answers.push(item);
                 })
             }
-            });
+            if (book){
+                $scope.question = book.title;
+                $scope.author = book.author;
+            }
+            }).error(function (reasons) {
+             $scope.answers = [];
+             $scope.question = "Извините, ничего не найдено:("
+        });
     };
 
     fetch();

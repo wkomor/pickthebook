@@ -24,6 +24,7 @@
     <div class="col-lg-8">
         <div ng-controller="indexController">
             <div>{{ question }}</div>
+            <div>{{ author }}</div>
             <div ng-repeat="item in answers"><br>
                     <button class="btn btn-success" ng-click="transit(item.id)">{{ item.text }}</button>
                     <br>
