@@ -15,9 +15,8 @@
         <div ng-controller="indexController">
             <div>{{ question }}</div>
             <div ng-repeat="item in answers"><br>
-                <a href="http://127.0.0.1:8080/api/detail/?id={{ item.id }}">
-                    <button class="btn btn-success">{{ item.text }}</button>
-                </a><br>
+                    <button class="btn btn-success" ng-click="transit(item.id)">{{ item.text }}</button>
+                    <br>
 
             </div>
         </div>

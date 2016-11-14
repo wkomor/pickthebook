@@ -20,7 +20,6 @@ class ItemDetail(APIView):
     Retrieve a node with his children.
     """
     def get_object(self, request):
-        print(request.GET.get('id'))
         try:
             return Item.objects.get(id=request.GET.get('id'))
         except Item.DoesNotExist:
