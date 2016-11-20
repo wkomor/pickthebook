@@ -12,7 +12,7 @@ class ItemList(generics.ListAPIView):
     """
     model = Item
     serializer_class = ItemSerializer
-    queryset = Item.objects.root_nodes()
+    queryset = Item.objects.root_nodes().order_by('order')
 
 
 class ItemDetail(APIView):

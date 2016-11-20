@@ -26,6 +26,7 @@ class Item(MPTTModel):
                                db_index=True)
 
     is_positive = models.BooleanField(default=True)
+    order = models.PositiveSmallIntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.text

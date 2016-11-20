@@ -28,6 +28,8 @@ app.controller('indexController', function($scope,  $http) {
             if (book){
                 $scope.question = book.title;
                 $scope.author = book.author;
+                $scope.description = book.description;
+                $scope.image = book.image;
             }
             }).error(function (reasons) {
              $scope.answers = [];
