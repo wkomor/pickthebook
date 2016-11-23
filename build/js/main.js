@@ -369,7 +369,7 @@ app.controller('indexController', function($scope,  $http) {
     $scope.question = 'С чего начнем?';
     $scope.answers = [];
     $scope.transit = function(id){
-        $http.get("http://127.0.0.1:8080/api/detail/?id="+id)
+        $http.get("http://pickthebook.ru/api/detail/?id="+id)
         .success(function(response) {
             $scope.answers = [];
             $scope.question = response.node.text;
@@ -394,7 +394,7 @@ app.controller('indexController', function($scope,  $http) {
 
     fetch();
     function fetch() {
-    $http.get("http://127.0.0.1:8080/api/root/")
+    $http.get("http://pickthebook.ru/api/root/")
         .success(function(response) {
             response.forEach(function (item, i, arr) {
                 if(item.itemtype === "Question"){
