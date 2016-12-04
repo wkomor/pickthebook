@@ -359,13 +359,8 @@ this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+th
  */
 var app = angular.module('pickthebook', []);
 
-app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
 
-app.controller('indexController', function($scope,  $http) {
+app.controller('indexController', function($scope,  $http, $location) {
     $scope.question = 'С чего начнем?';
     $scope.answers = [];
     $scope.transit = function(id){
@@ -373,6 +368,7 @@ app.controller('indexController', function($scope,  $http) {
         .success(function(response) {
             $scope.answers = [];
             $scope.question = response.node.text;
+            $location.hash(id);
             var answers = response.answers;
             var book = response.book;
             if (answers){
