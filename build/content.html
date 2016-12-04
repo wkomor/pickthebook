@@ -7,8 +7,8 @@
             </div>
             <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
                 <div class="row">
-                    <div class="question"><h2>{{ question }}</h2></div>
-                    <div class="answer">{{ author }}</div>
+                    <div class="question col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2>{{ question }}</h2></div>
+                    <div class="author col-lg-12 col-md-12 col-sm-12 col-xs-12">{{ author }}</div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-if="answers[0]"><button class="btn btn-success" ng-click="transit(answers[0].id)">{{ answers[0].text }}</button></div>
