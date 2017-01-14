@@ -21,7 +21,14 @@ class ItemDetail(APIView):
     """
     def get_object(self, request):
         try:
-            return Item.objects.get(id=request.GET.get('id'))
+            item_id = request.GET.get('id')
+            slug = request.GET.get('slug')
+            if item_id:
+                return Item.objects.get(id=item_id)
+            elif slug:
+                return Item.objects.get(slag=slug)
+            else:
+                raise Http404
         except Item.DoesNotExist:
             raise Http404
 

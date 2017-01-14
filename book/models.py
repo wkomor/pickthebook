@@ -20,6 +20,8 @@ class Item(MPTTModel):
     itemtype = models.PositiveSmallIntegerField(choices=ITEM_TYPE,
                                                 db_index=True,
                                                 default=QUESTION)
+    slag = models.SlugField(max_length=16, allow_unicode=True, null=True,
+                            blank=True)
     text = models.TextField()
     parent = models.ForeignKey('self', blank=True, null=True,
                                verbose_name="Parent", related_name='child',

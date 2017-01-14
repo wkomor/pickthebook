@@ -4,7 +4,7 @@ from .models import Item, Book, Genre
 
 
 class ItemAdmin(MPTTModelAdmin):
-    list_display = ('text', 'itemtype', 'parent',)
+    list_display = ('text', 'itemtype', 'parent', 'slag')
 
 
 @admin.register(Book)

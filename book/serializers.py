@@ -8,7 +8,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('id', 'text', 'parent', 'itemtype')
+        fields = ('id', 'text', 'parent', 'itemtype', 'slag')
 
     def get_itemtype(self, obj):
         return obj.get_itemtype_display()
