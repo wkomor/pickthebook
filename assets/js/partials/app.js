@@ -3,16 +3,18 @@
  */
 var app = angular.module('pickthebook', []);
 
-
 app.controller('indexController', function($scope,  $http, $location) {
     $scope.question = 'С чего начнем?';
     $scope.answers = [];
-    $scope.transit = function(id){
+
+    // Обработка нажатия на любую кнопку
+    function transit(id){
+        $location.path(id);
+
         $http.get("http://pickthebook.ru/api/detail/?id="+id)
         .success(function(response) {
             $scope.answers = [];
             $scope.question = response.node.text;
-            $location.hash(id);
             var answers = response.answers;
             var book = response.book;
             if (answers){
@@ -26,12 +28,37 @@ app.controller('indexController', function($scope,  $http, $location) {
                 $scope.description = book.description;
                 $scope.image = book.image;
             }
-            }).error(function (reasons) {
+            })
+        .error(function (reasons) {
              $scope.answers = [];
              $scope.question = "Извините, ничего не найдено:("
         });
+    }
+
+    $scope.transit = transit;
+
+    // Обработка кнопок назад и вперед в браузере
+    window.onhashchange = function() {
+     var location = $location.path();
+        if (location == "") {
+            $scope.question = 'С чего начнем?';
+            $scope.answers = [];
+            $scope.author = '';
+            $scope.description = '';
+            $scope.image = '';
+            fetch()
+        }
+        else  {
+            id = location.slice(1);
+            $scope.author = '';
+            $scope.description = '';
+            $scope.image = '';
+            transit(id);
+            console.log($location);
+        }
     };
 
+    // Обработка главной страницы
     fetch();
     function fetch() {
     $http.get("http://pickthebook.ru/api/root/")
